@@ -3,7 +3,7 @@
  <img width=200px height=150px src="./lazyowl.png" alt="Project logo"></a>
 </p>
 
-<h3 align="center">LazyOwl</h3>
+<h3 align="center">LazyAiOwl</h3>
 
 <div align="center">
 
