@@ -51,7 +51,7 @@ pyttsx3/speech_recognition/wikipedia/webbrowser/eel/beautifulsoup/pafy/python-mp
 ### Installing
 
 ```
-Pip install 'packages'
+Pip install 'packages' / npm install
 ```
 
 ## 🎈 Usage <a name="usage"></a>
@@ -60,7 +60,6 @@ Run this first
 
 ```
 Py AiOwl.py true
-
 ```
 
 Then
