@@ -24,64 +24,71 @@
 
 - [About](#about)
 - [Getting Started](#getting_started)
-- [Deployment](#deployment)
 - [Usage](#usage)
-- [Built Using](#built_using)
-- [TODO](../TODO.md)
-- [Contributing](../CONTRIBUTING.md)
+- [Build Using](#build_using)
+- [TODO](#todo)
 - [Authors](#authors)
-- [Acknowledgments](#acknowledgement)
 
 ## 🧐 About <a name = "about"></a>
 
-Early placeholder of my project (will update soon)
+Lazy AiOwl is an assistant with many possibilities.
+The current features are : Search and instant answers, Search in wikipedia, Play a music.
+
+See in-app commands list.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
+the following packages
+
 ```
-WILL ADD SOON
+pyttsx3/speech_recognition/wikipedia/webbrowser/eel/beautifulsoup/pafy/python-mpv
 ```
 
 ### Installing
 
 ```
-WILL ADD SOON
-```
-
-## 🔧 Running the tests <a name = "tests"></a>
-
-```
-WILL ADD SOON
+Pip install 'packages'
 ```
 
 ## 🎈 Usage <a name="usage"></a>
 
-```
-WILL ADD SOON
-```
-
-## 🚀 Deployment <a name = "deployment"></a>
+Run this first
 
 ```
-WILL ADD SOON
-```
-
-## ⛏️ Built Using <a name = "built_using"></a>
+Py AiOwl.py true
 
 ```
-WILL ADD SOON
+
+Then
+
 ```
+npm start
+```
+
+If you wanna execute it using the build folder run it without any argument
+
+```
+Py AiOwl.py
+```
+
+## ⛏️ Build Using <a name = "build_using"></a>
+
+```
+python -m eel AiOwl.py build --onefile
+```
+
+## ✍️ TODO <a name = "todo"></a>
+
+- Wake / sleep feature
+- Volume control
+- Learn and play a game
+- Teach a game to the user
+- Play games with the user
 
 ## ✍️ Authors <a name = "authors"></a>
 
 - [@Ouail Bni aka Mr-Wii](https://github.com/mr-wii) - Idea & Initial work
-
-See also the list of [contributors]() who participated in this project.
-
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
-
-- WILL ADD SOON
