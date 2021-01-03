@@ -42,16 +42,19 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-the following packages
+Please run this to setup the environement aswell as the packages
 
 ```
-pyttsx3/speech_recognition/wikipedia/webbrowser/eel/beautifulsoup/pafy/python-mpv
+virtualenv -p /usr/local/bin/python2 venv
+virtualenv venv
+source venv/bin/activate
+pip install -r PyRequirements.txt
 ```
 
 ### Installing
 
 ```
-Pip install 'packages' / npm install
+npm run-script build
 ```
 
 ## 🎈 Usage <a name="usage"></a>
@@ -77,7 +80,7 @@ Py AiOwl.py
 ## ⛏️ Build Using <a name = "build_using"></a>
 
 ```
-python -m eel AiOwl.py build --onefile
+python -m eel AiOwl.py build --onefile --noconsole
 ```
 
 ## ✍️ TODO <a name = "todo"></a>
