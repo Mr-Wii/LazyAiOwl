@@ -55,10 +55,14 @@ source venv/bin/activate
 pip install -r PyRequirements.txt
 ```
 
+## libmpv
+
+libmpv.so either locally (in your current working directory) or somewhere in your system library search path. This module is somewhat lenient as far as libmpv versions are concerned but since libmpv is changing quite frequently you'll only get all the newest features when using an up-to-date version of this module.
+
 ### Installing
 
 ```
-npm run-script build
+yarn build
 ```
 
 ## 🎈 Usage <a name="usage"></a>
@@ -72,7 +76,7 @@ Py AiOwl.py true
 Then
 
 ```
-npm start
+yarn start
 ```
 
 If you wanna execute it using the build folder run it without any argument
