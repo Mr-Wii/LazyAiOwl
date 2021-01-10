@@ -22,12 +22,12 @@
 
 ## 📝 Table of Contents
 
-- [About](#about)
-- [Getting Started](#getting_started)
-- [Usage](#usage)
-- [Build Using](#build_using)
-- [TODO](#todo)
-- [Authors](#authors)
+-   [About](#about)
+-   [Getting Started](#getting_started)
+-   [Usage](#usage)
+-   [Build Using](#build_using)
+-   [TODO](#todo)
+-   [Authors](#authors)
 
 ## 🧐 About <a name = "about"></a>
 
@@ -41,6 +41,10 @@ See in-app commands list.
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
+
+    Python 3.6.8+
+
+Virtual environment included but in case you wanna setup it from scratch ↓
 
 Please run this to setup the environement aswell as the packages
 
@@ -85,12 +89,13 @@ python -m eel AiOwl.py build --onefile --noconsole
 
 ## ✍️ TODO <a name = "todo"></a>
 
-- Wake / sleep feature
-- Volume control
-- Learn and play a game
-- Teach a game to the user
-- Play games with the user
+-   Wake / sleep feature (sleep done)
+-   Volume control (done)
+-   Learn and play a game
+-   Teach a game to the user
+-   Play games with the user
+-   More to come...
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@Ouail Bni aka Mr-Wii](https://github.com/mr-wii) - Idea & Initial work
+-   [@Ouail Bni aka Mr-Wii](https://github.com/mr-wii) - Idea & Initial work
