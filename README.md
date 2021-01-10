@@ -22,12 +22,12 @@
 
 ## 📝 Table of Contents
 
--   [About](#about)
--   [Getting Started](#getting_started)
--   [Usage](#usage)
--   [Build Using](#build_using)
--   [TODO](#todo)
--   [Authors](#authors)
+- [About](#about)
+- [Getting Started](#getting_started)
+- [Usage](#usage)
+- [Build Using](#build_using)
+- [TODO](#todo)
+- [Authors](#authors)
 
 ## 🧐 About <a name = "about"></a>
 
@@ -42,27 +42,16 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-    Python 3.6.8+
-
-Virtual environment included but in case you wanna setup it from scratch ↓
-
-Please run this to setup the environement aswell as the packages
+the following packages
 
 ```
-virtualenv -p /usr/local/bin/python2 venv
-virtualenv venv
-source venv/bin/activate
-pip install -r PyRequirements.txt
+pyttsx3/speech_recognition/wikipedia/webbrowser/eel/beautifulsoup/pafy/python-mpv
 ```
-
-## libmpv
-
-libmpv.so either locally (in your current working directory) or somewhere in your system library search path. This module is somewhat lenient as far as libmpv versions are concerned but since libmpv is changing quite frequently you'll only get all the newest features when using an up-to-date version of this module.
 
 ### Installing
 
 ```
-yarn build
+Pip install 'packages' / npm install
 ```
 
 ## 🎈 Usage <a name="usage"></a>
@@ -76,7 +65,7 @@ Py AiOwl.py true
 Then
 
 ```
-yarn start
+npm start
 ```
 
 If you wanna execute it using the build folder run it without any argument
@@ -88,18 +77,17 @@ Py AiOwl.py
 ## ⛏️ Build Using <a name = "build_using"></a>
 
 ```
-python -m eel AiOwl.py build --onefile --noconsole
+python -m eel AiOwl.py build --onefile
 ```
 
 ## ✍️ TODO <a name = "todo"></a>
 
--   Wake / sleep feature (sleep done)
--   Volume control (done)
--   Learn and play a game
--   Teach a game to the user
--   Play games with the user
--   More to come...
+- Wake / sleep feature
+- Volume control
+- Learn and play a game
+- Teach a game to the user
+- Play games with the user
 
 ## ✍️ Authors <a name = "authors"></a>
 
--   [@Ouail Bni aka Mr-Wii](https://github.com/mr-wii) - Idea & Initial work
+- [@Ouail Bni aka Mr-Wii](https://github.com/mr-wii) - Idea & Initial work
