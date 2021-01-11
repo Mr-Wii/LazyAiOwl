@@ -88,7 +88,7 @@ Py AiOwl.py
 ## ⛏️ Build Using <a name = "build_using"></a>
 
 ```
-python -m eel AiOwl.py build --onefile --noconsole
+python -m eel AiOwl.py build  --icon=owl.ico --hiddenimport srsly.msgpack.util --hiddenimport cymem --hiddenimport cymem.cymem --hiddenimport preshed.maps --hiddenimport thinc.linalg --hiddenimport SpaCy --hiddenimport nltk.chunk.named_entity --add-data "mpv-1.dll;.\mpvlib\" --additional-hooks-dir=. --hiddenimport chatterbot.preprocessors --hiddenimport mpv
 ```
 
 ## ✍️ TODO <a name = "todo"></a>
