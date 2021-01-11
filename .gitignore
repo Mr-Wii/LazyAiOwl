@@ -4,10 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
-_pycache_
-/venv
 /dist
-/_pycache_
+/.vscode
 # testing
 /coverage
 
@@ -15,6 +13,7 @@ _pycache_
 /build
 
 # misc
+_pycache_
 .DS_Store
 .env.local
 .env.development.local
@@ -26,3 +25,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 __pycache__/AiOwl.cpython-36.pyc
+__pycache__/AiOwl.cpython-39.pyc
+__pycache__/hook-spacy.cpython-36.pyc

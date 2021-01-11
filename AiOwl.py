@@ -1,22 +1,25 @@
-import pyttsx3
-import datetime
-import speech_recognition as sr
-import wikipedia
-import webbrowser
-import os
-import sys
-import eel
-import requests
-import re
-import subprocess
-import urllib.parse
-import urllib.request
-from bs4 import BeautifulSoup
-import pafy
-import socket
-from python_mpv_jsonipc import MPV
-from pyttsx3.drivers import sapi5
 import mpv
+from chatterbot.trainers import ListTrainer
+from chatterbot import ChatBot
+from pyttsx3.drivers import sapi5
+import socket
+import pafy
+from bs4 import BeautifulSoup
+import urllib.request
+import urllib.parse
+import subprocess
+import re
+import requests
+import eel
+import sys
+import time
+import os
+import webbrowser
+import wikipedia
+import speech_recognition as sr
+import datetime
+import pyttsx3
+
 
 sys.path.insert(1, '../../')
 
@@ -28,15 +31,77 @@ engine.setProperty('voice', voices[1].id)
 
 playerPaused = False
 
-player = mpv.MPV(ytdl=True)
+player = mpv.MPV()
+
+player.play('https://www.youtube.com/watch?v=yVDRKWRg70k')
+# Create a new instance of a ChatBot
+bot = ChatBot(
+    'Lazy AiOwl',
+    storage_adapter='chatterbot.storage.SQLStorageAdapter',
+    logic_adapters=[
+        {
+            'import_path': 'chatterbot.logic.BestMatch',
+            'default_response': 'I am sorry, but I do not understand.',
+            'maximum_similarity_threshold': 0.90
+        }
+    ]
+)
+
+trainer = ListTrainer(bot)
+
+trainer.train([
+    'Hello, how are you?',
+    'I am doing well.',
+    'That is good to hear.',
+    'Thank you, what about you?',
+    "I'm fine",
+    'That is good to hear.',
+    'Who are you?',
+    'I am just a random owl that wants to talk with you'
+])
+
+trainer.train([
+    'Hello, how are you?',
+    'I am great.',
+    'That is awesome.',
+    'Thanks, and you?',
+    'Pretty good',
+    'Glad to hear that!',
+    'What is your name?',
+    'AiOwl, a lazy one!'
+])
+
+trainer.train([
+    "Hey, how's it going?",
+    'I am doing good, thank you.',
+    'Cool',
+    'Hehe thanks, what about you though ?',
+    'Not bad',
+    'Aw... hope you feel better soon!',
+    'What are you?',
+    'An amazing AI that wants to be useful'
+])
+
+trainer.train([
+    "What's good with you?",
+    'All good :D',
+    "That's nice",
+    'What about you ?',
+    'Good',
+    'that is great'
+    'Are you a robot?',
+    'Indeed, but i am your friend aswell!'
+])
 
 
 def pauseMusic():
     global playerPaused
-    # subprocess.Popen(
-    #     ["echo", "cycle", "pause", ">\\\\.\\pipe\\mpv-pipe"], shell=True)
     player.cycle('pause')
     playerPaused = not playerPaused
+
+
+def volumeChange(x):
+    player.volume = x
 
 
 def switchOn(music_name):
@@ -62,22 +127,6 @@ def switchOn(music_name):
 
     eel.updateP("{}".format(search_results[0]))
 
-    # player.wait_for_playback()
-
-    # p = subprocess.Popen(
-    #     "start /b " + "mvp\\mpv " + clip2 +
-    #     " --no-video --input-ipc-server=\\\\.\\pipe\\mpv-pipe > output.txt",
-    #     shell=True, stdout=subprocess.PIPE,
-    #     stderr=subprocess.PIPE)
-    # " --no-video --loop=inf --input-ipc-server=\\\\.\\pipe\\mpv-pipe > output.txt,"
-
-
-# def switchOff():
-#     # playerON = 'off'
-#     # subprocess.Popen(
-#     #     ["echo", "quit", ">\\\\.\\pipe\\mpv-pipe"], shell=True)
-#     player.quit()
-
 
 def wiiPlayer(searchu):
     global playerPaused
@@ -93,6 +142,7 @@ def speak(audio):
     engine.runAndWait()
 
 
+@eel.expose
 def wishMe():
     hour = int(datetime.datetime.now().hour)
     if hour >= 0 and hour < 12:
@@ -114,6 +164,7 @@ def takeCommand():
     with sr.Microphone() as source:
         eel.updateC("Listening...")
         r.pause_threshold = 1
+        r.adjust_for_ambient_noise(source)
         audio = r.listen(source)
     try:
         eel.updateC("Recognizing")
@@ -130,8 +181,19 @@ def takeCommand():
 
 
 @eel.expose
+def inputFromUser(datos):
+    if datos != "Bye":
+        response = bot.get_response(datos)
+        eel.replyAi(str(response))
+    if datos == "Bye":
+        eel.replyAi('Bye Bye :)')
+        time.sleep(3)
+        eel.SwitchtoChat(1, '')
+        fricc()
+
+
+@eel.expose
 def fricc():
-    wishMe()
     while True:
         query = takeCommand().lower()  # Converting user query into lower case
         # Logic for executing tasks based on query
@@ -168,6 +230,19 @@ def fricc():
             pauseMusic()
         elif 'stop the music' in query:
             pauseMusic()
+        elif "let's chat" in query or 'hello' in query or "let's talk" in query:
+            speak('Switching to Chat')
+            eel.SwitchtoChat(3, 'Chat Mode')
+            speak('I am ready')
+            break
+        elif "don't listen" in query or "stop listening" in query:
+            speak("for how much time you want me to be quiet")
+            a = int(takeCommand())
+            time.sleep(a)
+            print(a)
+        elif 'put the volume on' in query:
+            query = query.replace("put the volume on", "")
+            volumeChange(query)
         else:
             response = requests.get(
                 'https://api.duckduckgo.com/?q=' + query + '&format=json&pretty=1')
@@ -191,10 +266,11 @@ def start_eel(develop):
     eel_kwargs = dict(
         host='localhost',
         port=8080,
-        size=(600, 900),
+        size=(600, 1000),
     )
     try:
         eel.start(page, mode=app, **eel_kwargs)
+
     except EnvironmentError:
         # If Chrome isn't found, fallback to Microsoft Edge on Win10 or greater
         if sys.platform in ['win32', 'win64'] and int(platform.release()) >= 10:
